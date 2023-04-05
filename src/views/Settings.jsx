@@ -25,7 +25,6 @@ export const Settings = () => {
     <>
       {navigation.state}
       <h1>Settings</h1>
-      {loadedData.url}
       <img src={loadedData.url}></img>
     </>
   );
