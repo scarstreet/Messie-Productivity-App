@@ -2,21 +2,24 @@ import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { createBrowserRouter, createRoutesFromElements, Link, Outlet, Route, RouterProvider } from "react-router-dom";
-import { Home } from "./views/Home";
-import { NewGoals } from "./views/NewGoals";
-import { dataLoader, Settings } from "./views/Settings";
-import { Statistics } from "./views/Statistics";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { dataLoader, Settings } from "./pages/Settings";
+import { Statistics } from "./pages/Statistics";
+import { AppBar } from "./components/AppBar";
 
 const Root = ()=>{
   return <>
-    <div className="nav-bar" style={{width:'100%',display:'flex',justifyContent:'space-around'}}>
+    {/* <div className="nav-bar" style={{width:'100%',display:'flex',justifyContent:'space-around'}}>
       <Link to="/">Home</Link>
       <Link to="/settings">Settings</Link>
-    </div>
+    </div> */}
+    <AppBar />
 
     <div className="route-display">
       <Outlet></Outlet>
     </div>
+
   </>
 }
 
@@ -25,7 +28,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
         <Route index element={<Home/>}/>
-        <Route path="/new-goals" element={<NewGoals/>}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="/settings" loader={dataLoader} element={<Settings/>}/>
         <Route path="/statistics" element={<Statistics/>}/>
       </Route>

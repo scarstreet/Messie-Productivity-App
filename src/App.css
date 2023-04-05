@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+:root{
+  /* Put lightmode vars here */
+  --appbar-appear-time: 1s;
+  --bg-color:rgb(241, 241, 241);
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  /* Put general settings here */
+  color:black;
 }
+.dark:root{
+  /* Put darkmode vars here */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* Put general settings here */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.route-display{
+  @apply min-h-screen p-[3rem_0rem_0rem_0rem] bg-[color:var(--bg-color)];
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.app-bar {
+  @apply fixed w-screen h-screen flex flex-col justify-center bg-sky-500 shadow-[0px_3px_8px_rgba(0,0,0,0.3)] ;
+
+  animation: AB-loaded var(--appbar-appear-time) 2s 1 forwards;
+}
+.app-bar-logo {
+  @apply text-2xl font-bold ml-4 first-letter:text-white  text-white opacity-0 select-none;
+
+  animation: AB-loaded-title 2s 1s 1 forwards;
+}
+
+/* Pages below */
+.home {
+  @apply flex flex-col text-center py-[10vh];
+}
+/* Animation keyframes below */
+
+@keyframes AB-loaded-title {
+  20%,80% {
+    @apply opacity-100;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    @apply text-amber-300 opacity-100;
+  }
+}
+@keyframes AB-loaded {
+  100% {
+    @apply h-12;
   }
 }
